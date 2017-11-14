@@ -1,0 +1,38 @@
+name: comidi
+version: 0.1.0
+synopsis: Music stuff
+description: See README at <https://github.com/qoelet/comidi#readme>
+maintainer: Kenny Shen <kenny@machinesung.com>
+license: MIT
+github: qoelet/comidi
+category: Music
+
+ghc-options: -Wall -Wincomplete-uni-patterns -Wmissing-import-lists
+
+dependencies:
+  - base >= 4.7 && < 5
+  - Euterpea
+
+library:
+  source-dirs: src
+  exposed-modules:
+  other-modules:
+
+executables:
+  comidi:
+    ghc-options: -threaded
+    main: Main.hs
+    source-dirs: app
+    dependencies:
+      - comidi
+
+tests:
+  spec:
+    cpp-options: -DTEST
+    main: Spec.hs
+    source-dirs:
+      - test
+      - src
+    dependencies:
+      - hspec == 2.*
+      - QuickCheck

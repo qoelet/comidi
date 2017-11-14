@@ -1,0 +1,61 @@
+-- This file has been generated from package.yaml by hpack version 0.18.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:                comidi
+version:             0.1.0
+synopsis:            Music stuff
+description:         See README at <https://github.com/qoelet/comidi#readme>
+homepage:            https://github.com/qoelet/comidi#readme
+bug-reports:         https://github.com/qoelet/comidi/issues
+license:             MIT
+license-file:        LICENSE
+maintainer:          Kenny Shen <kenny@machinesung.com>
+category:            Music
+build-type:          Simple
+cabal-version:       >= 1.10
+
+source-repository head
+  type: git
+  location: https://github.com/qoelet/comidi
+
+library
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wincomplete-uni-patterns -Wmissing-import-lists
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_comidi
+  build-depends:
+      base >= 4.7 && < 5
+    , Euterpea
+  default-language: Haskell2010
+
+executable comidi
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wincomplete-uni-patterns -Wmissing-import-lists -threaded
+  build-depends:
+      base >= 4.7 && < 5
+    , Euterpea
+    , comidi
+  default-language: Haskell2010
+
+test-suite spec
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+      src
+  ghc-options: -Wall -Wincomplete-uni-patterns -Wmissing-import-lists
+  cpp-options: -DTEST
+  build-depends:
+      base >= 4.7 && < 5
+    , Euterpea
+    , hspec == 2.*
+    , QuickCheck
+  other-modules:
+      Lib
+  default-language: Haskell2010
