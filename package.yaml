@@ -12,18 +12,23 @@ ghc-options: -Wall -Wincomplete-uni-patterns -Wmissing-import-lists
 dependencies:
   - base >= 4.7 && < 5
   - Euterpea
+  - random
+  - random-shuffle
   - vivid
 
 library:
   source-dirs: src
   exposed-modules:
+    - Doodles.Do
+    - Doodles.Re
+    - Doodles.Mi
   other-modules:
 
 executables:
   comidi:
     ghc-options: -threaded
     main: Main.hs
-    source-dirs: app
+    source-dirs: app/Midi
     dependencies:
       - comidi
   covivid:

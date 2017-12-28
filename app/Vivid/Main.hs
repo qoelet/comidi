@@ -1,17 +1,28 @@
 {-# LANGUAGE DataKinds #-}
 
-import Vivid
+import           System.Random
+import           System.Random.Shuffle
+import           Vivid
 
-wobble :: SynthDef '["note"]
-wobble = sd (0 ::I "note") $ do
-  s <- 50 ~* sinOsc (freq_ 10) ? KR
-  s1 <- 0.1 ~* sinOsc (freq_ $ midiCPS (V::V "note") ~+ s)
-  out 0 [s1, s1]
+import           Doodles.Do
+import           Doodles.Re
+import           Doodles.Mi
 
 main :: IO ()
-main = do
-  s <- synth wobble ()
-  let notes = take 12 [ x | x <- [38..], (x `mod` 12) `elem` [0,3,5] ]
-  forM_ (cycle notes) $ \note -> do
-    set s (toI note ::I "note")
-    wait 0.2
+main = forever $ do
+  let notes = [2, 5, 7, 10, 15]
+  notes' <- shuffleM notes
+  forM_ notes' $ \note -> do
+    s1 <- synth doodaDo ()
+    s2 <- synth (doodaRe note) ()
+    s3 <- synth doodaMi ()
+    set s1 (toI (note * 5):: I "note")
+    set s2 (toI (note + 200) :: I "note")
+    set s3 (toI (note * 7) :: I "note")
+    wait note
+    free s3
+    set s1 (toI (note * 100):: I "note")
+    set s2 (toI note :: I "note")
+    wait (note `div` 3)
+    free s1
+    free s2

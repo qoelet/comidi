@@ -24,23 +24,29 @@ library
       src
   ghc-options: -Wall -Wincomplete-uni-patterns -Wmissing-import-lists
   exposed-modules:
-      Lib
+      Doodles.Do
+      Doodles.Re
+      Doodles.Mi
   other-modules:
       Paths_comidi
   build-depends:
       base >= 4.7 && < 5
     , Euterpea
+    , random
+    , random-shuffle
     , vivid
   default-language: Haskell2010
 
 executable comidi
   main-is: Main.hs
   hs-source-dirs:
-      app
+      app/Midi
   ghc-options: -Wall -Wincomplete-uni-patterns -Wmissing-import-lists -threaded
   build-depends:
       base >= 4.7 && < 5
     , Euterpea
+    , random
+    , random-shuffle
     , vivid
     , comidi
   default-language: Haskell2010
@@ -53,6 +59,8 @@ executable covivid
   build-depends:
       base >= 4.7 && < 5
     , Euterpea
+    , random
+    , random-shuffle
     , vivid
     , comidi
   default-language: Haskell2010
@@ -68,9 +76,13 @@ test-suite spec
   build-depends:
       base >= 4.7 && < 5
     , Euterpea
+    , random
+    , random-shuffle
     , vivid
     , hspec == 2.*
     , QuickCheck
   other-modules:
-      Lib
+      Doodles.Do
+      Doodles.Mi
+      Doodles.Re
   default-language: Haskell2010
