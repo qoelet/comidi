@@ -8,4 +8,7 @@ extra-deps:
 - Stream-0.4.7.2
 - arrows-0.4.4.1
 - lazysmallcheck-0.6
+- vivid-0.3.0.2
+- vivid-osc-0.3.0.0
+- vivid-supercollider-0.3.0.0
 resolver: lts-9.13

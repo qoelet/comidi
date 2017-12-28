@@ -30,6 +30,7 @@ library
   build-depends:
       base >= 4.7 && < 5
     , Euterpea
+    , vivid
   default-language: Haskell2010
 
 executable comidi
@@ -40,6 +41,19 @@ executable comidi
   build-depends:
       base >= 4.7 && < 5
     , Euterpea
+    , vivid
+    , comidi
+  default-language: Haskell2010
+
+executable covivid
+  main-is: Main.hs
+  hs-source-dirs:
+      app/Vivid
+  ghc-options: -Wall -Wincomplete-uni-patterns -Wmissing-import-lists -threaded
+  build-depends:
+      base >= 4.7 && < 5
+    , Euterpea
+    , vivid
     , comidi
   default-language: Haskell2010
 
@@ -54,6 +68,7 @@ test-suite spec
   build-depends:
       base >= 4.7 && < 5
     , Euterpea
+    , vivid
     , hspec == 2.*
     , QuickCheck
   other-modules:
